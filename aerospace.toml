@@ -1,0 +1,99 @@
+# Reference: https://github.com/i3/i3/blob/next/etc/config
+
+config-version = 2
+
+persistent-workspaces = [
+    'term',
+    'web',
+    'comm',
+    'task',
+    'mail',
+]
+
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+after-startup-command = [
+  'exec-and-forget borders order=above active_color=0xff83a598 inactive_color=0xff1c1c1c width=1.0 hidpi=on'
+]
+
+[gaps]
+inner.horizontal = 8
+inner.vertical =   8
+outer.left =       4
+outer.bottom =     4
+outer.top =        4
+outer.right =      4
+
+[mode.main.binding]
+    cmd-z = 'exec-and-forget kitty -d ~'
+    cmd-shift-z = 'close'
+
+    cmd-d = 'exec-and-forget choose-app'
+
+    cmd-h = 'focus left'
+    cmd-j = 'focus down'
+    cmd-k = 'focus up'
+    cmd-l = 'focus right'
+
+    cmd-shift-h = 'move left'
+    cmd-shift-j = 'move down'
+    cmd-shift-k = 'move up'
+    cmd-shift-l = 'move right'
+
+    cmd-ctrl-h = 'focus-monitor left'
+    cmd-ctrl-l = 'focus-monitor right'
+
+    cmd-shift-backslash = 'split horizontal'
+    cmd-shift-minus = 'split vertical'
+
+    cmd-f = 'fullscreen'
+
+    alt-shift-space = 'layout floating tiling'
+
+    cmd-q = 'workspace term'
+    cmd-w = 'workspace web'
+    cmd-e = 'workspace comm'
+    cmd-r = 'workspace task'
+    cmd-1 = 'workspace mail'
+    cmd-2 = 'workspace 1'
+    cmd-3 = 'workspace 2'
+    cmd-4 = 'workspace 3'
+
+    cmd-alt-q = 'summon-workspace term'
+    cmd-alt-w = 'summon-workspace web'
+    cmd-alt-e = 'summon-workspace comm'
+    cmd-alt-r = 'summon-workspace task'
+    cmd-alt-1 = 'summon-workspace mail'
+    cmd-alt-2 = 'summon-workspace 1'
+    cmd-alt-3 = 'summon-workspace 2'
+    cmd-alt-4 = 'summon-workspace 3'
+
+    cmd-ctrl-q = 'exec-and-forget focus-app term --launch term'
+    cmd-ctrl-w = 'exec-and-forget focus-app web --launch web'
+    cmd-ctrl-e = 'exec-and-forget focus-app comm --launch comm'
+    cmd-ctrl-r = 'exec-and-forget focus-app task --launch task'
+    cmd-ctrl-1 = 'exec-and-forget focus-app mail --launch mail'
+
+    cmd-shift-q = 'move-node-to-workspace term'
+    cmd-shift-w = 'move-node-to-workspace web'
+    cmd-shift-e = 'move-node-to-workspace comm'
+    cmd-shift-r = 'move-node-to-workspace task'
+    cmd-shift-1 = 'move-node-to-workspace mail'
+    cmd-shift-2 = 'move-node-to-workspace 1'
+    cmd-shift-3 = 'move-node-to-workspace 2'
+    cmd-shift-4 = 'move-node-to-workspace 3'
+
+    cmd-shift-c = 'reload-config'
+
+    cmd-shift-t = 'mode resize'
+
+[mode.resize.binding]
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+    enter = 'mode main'
+    esc = 'mode main'
