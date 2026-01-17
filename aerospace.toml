@@ -24,14 +24,28 @@ after-startup-command = [
     'exec-and-forget ${HOME}/.local/gitbin/aerospace-assign-workspaces',
 ]
 
+on-focus-changed = [
+  'exec-and-forget sketchybar --trigger aerospace_focus_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+]
+
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE FOCUSED_DISPLAY=$(aerospace list-monitors --focused | awk "{print $1}")',
+]
+
 [gaps]
 inner.horizontal = 8
 inner.vertical =   8
 outer.left =       4
 outer.bottom =     4
 outer.right =      4
-# Sketchybar gap
-outer.top =        60
+outer.top = [
+  { monitor."EB321HQU" = 40 },
+  { monitor."Acer CB241HY" = 40 },
+  { monitor."Built-in Retina Display" = 30 },
+  40,
+]
 
 [mode.main.binding]
     cmd-z = 'exec-and-forget kitty -d ~'
@@ -50,6 +64,8 @@ outer.top =        60
     cmd-shift-l = 'move right'
 
     cmd-ctrl-h = 'focus-monitor left'
+    cmd-ctrl-j = 'workspace next'
+    cmd-ctrl-k = 'workspace prev'
     cmd-ctrl-l = 'focus-monitor right'
 
     cmd-shift-backslash = 'split horizontal'
