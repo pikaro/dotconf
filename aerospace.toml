@@ -33,7 +33,7 @@ outer.right =      4
     cmd-z = 'exec-and-forget kitty -d ~'
     cmd-shift-z = 'close --quit-if-last-window'
 
-    cmd-d = 'exec-and-forget choose-app'
+    cmd-d = 'exec-and-forget ${HOME}/.local/gitbin/choose-app'
 
     cmd-h = 'focus left'
     cmd-j = 'focus down'
