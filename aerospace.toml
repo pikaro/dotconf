@@ -11,6 +11,9 @@ persistent-workspaces = [
     '3',
 ]
 
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
 enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
@@ -26,8 +29,9 @@ inner.horizontal = 8
 inner.vertical =   8
 outer.left =       4
 outer.bottom =     4
-outer.top =        4
 outer.right =      4
+# Sketchybar gap
+outer.top =        60
 
 [mode.main.binding]
     cmd-z = 'exec-and-forget kitty -d ~'
