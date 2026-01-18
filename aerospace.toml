@@ -21,7 +21,7 @@ enable-normalization-opposite-orientation-for-nested-containers = false
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 after-startup-command = [
-    'exec-and-forget borders order=above active_color=0xff83a598 inactive_color=0xff1c1c1c width=1.0 hidpi=on',
+    'exec-and-forget borders order=above active_color=0xff83a598 inactive_color=0xff1c1c1c width=2.0 hidpi=on',
     'exec-and-forget ${HOME}/.local/gitbin/aerospace-assign-workspaces',
     'exec-and-forget sketchybar',
 ]
