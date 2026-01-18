@@ -49,10 +49,12 @@ outer.top = [
 ]
 
 [mode.main.binding]
-    cmd-z = 'exec-and-forget kitty -d ~'
     cmd-shift-z = 'close --quit-if-last-window'
 
-    cmd-d = '''exec-and-forget /bin/bash -c '${HOME}/.local/gitbin/choose-app''''
+    cmd-z = 'exec-and-forget kitty -d ~'
+    cmd-ctrl-enter = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app Marta --launch'
+
+    cmd-d = 'exec-and-forget ${HOME}/.local/gitbin/choose-app'
 
     cmd-h = 'focus left'
     cmd-j = 'focus down'
