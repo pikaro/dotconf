@@ -6,9 +6,10 @@ persistent-workspaces = [
     'c',
     't',
     'm',
+    'a',
+    's',
     '1',
     '2',
-    '3',
 ]
 
 default-root-container-layout = 'tiles'
@@ -26,13 +27,12 @@ after-startup-command = [
 ]
 
 on-focus-changed = [
-  'exec-and-forget sketchybar --trigger aerospace_focus_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+  'exec-and-forget /bin/bash -c "sketchybar --trigger aerospace_focus_change PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"',
 ]
 
 exec-on-workspace-change = [
-  '/bin/bash',
-  '-c',
-  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE FOCUSED_DISPLAY=$(aerospace list-monitors --focused | /usr/bin/awk "{print $1}")',
+  '/bin/bash', '-c',
+  'sketchybar --trigger aerospace_workspace_change PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
 ]
 
 [gaps]
@@ -51,9 +51,6 @@ outer.top = [
 [mode.main.binding]
     cmd-shift-z = 'close --quit-if-last-window'
 
-    cmd-z = 'exec-and-forget kitty -d ~'
-    cmd-ctrl-enter = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app Marta --launch'
-
     cmd-d = 'exec-and-forget ${HOME}/.local/gitbin/choose-app'
 
     cmd-h = 'focus left'
@@ -71,8 +68,8 @@ outer.top = [
     cmd-ctrl-k = 'workspace prev'
     cmd-ctrl-l = 'focus-monitor right'
 
-    cmd-shift-backslash = 'split horizontal'
-    cmd-shift-minus = 'split vertical'
+    cmd-shift-ctrl-backslash = 'split horizontal'
+    cmd-shift-ctrl-minus = 'split vertical'
 
     cmd-shift-f = 'fullscreen'
 
@@ -83,33 +80,42 @@ outer.top = [
     cmd-e = 'workspace c'
     cmd-r = 'workspace t'
     cmd-1 = 'workspace m'
-    cmd-2 = 'workspace 1'
-    cmd-3 = 'workspace 2'
-    cmd-4 = 'workspace 3'
+    cmd-2 = 'workspace s'
+    cmd-3 = 'workspace 1'
+    cmd-4 = 'workspace 2'
+    cmd-backslash = 'workspace a'
+    cmd-backspace = 'workspace-back-and-forth'
 
     cmd-alt-q = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap k'
     cmd-alt-w = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap w'
     cmd-alt-e = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap c'
     cmd-alt-r = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap t'
     cmd-alt-1 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap m'
-    cmd-alt-2 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap 1'
-    cmd-alt-3 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap 2'
-    cmd-alt-4 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap 3'
+    cmd-alt-2 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap s'
+    cmd-alt-3 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap 1'
+    cmd-alt-4 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap 2'
+    cmd-alt-backslash = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-summon-swap a'
+
+    cmd-ctrl-enter = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app Marta --launch'
+    cmd-ctrl-z = 'exec-and-forget kitty -d ~'
 
     cmd-ctrl-q = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app k --launch k'
     cmd-ctrl-w = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app w --launch w'
     cmd-ctrl-e = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app c --launch c'
     cmd-ctrl-r = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app t --launch t'
     cmd-ctrl-1 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app m --launch m'
+    cmd-ctrl-2 = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app s --launch s'
+    cmd-ctrl-backslash = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-focus-app a --launch a'
 
     cmd-shift-q = 'move-node-to-workspace k'
     cmd-shift-w = 'move-node-to-workspace w'
     cmd-shift-e = 'move-node-to-workspace c'
     cmd-shift-r = 'move-node-to-workspace t'
     cmd-shift-1 = 'move-node-to-workspace m'
-    cmd-shift-2 = 'move-node-to-workspace 1'
-    cmd-shift-3 = 'move-node-to-workspace 2'
-    cmd-shift-4 = 'move-node-to-workspace 3'
+    cmd-shift-2 = 'move-node-to-workspace s'
+    cmd-shift-3 = 'move-node-to-workspace 1'
+    cmd-shift-4 = 'move-node-to-workspace 2'
+    cmd-shift-backslash = 'move-node-to-workspace a'
 
     cmd-shift-c = 'reload-config'
     cmd-shift-v = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-assign-workspaces'
@@ -125,7 +131,31 @@ outer.top = [
     esc = 'mode main'
 
 [[on-window-detected]]
-if.app-id = 'com.apple.finder'
-run = [
-    'layout floating'
-]
+    if.app-id = 'com.apple.finder'
+    run = ['layout floating']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari'
+    if.app-name-regex-substring = 'ChatGPT'
+    run = ['move-node-to-workspace a']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Safari'
+    if.app-name-regex-substring = 'ChatGPT'
+    run = ['move-node-to-workspace a']
+
+[[on-window-detected]]
+    if.app-id = 'ch.laurinbrandner.nuage'
+    run = ['move-node-to-workspace s']
+
+[[on-window-detected]]
+    if.app-id = 'com.spotify.client'
+    run = ['move-node-to-workspace s']
+
+[[on-window-detected]]
+    if.app-id = 'net.whatsapp.WhatsApp'
+    run = ['move-node-to-workspace c']
+
+[[on-window-detected]]
+    if.app-id = 'org.whispersystems.signal-desktop'
+    run = ['move-node-to-workspace c']
