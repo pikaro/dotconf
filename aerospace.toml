@@ -119,6 +119,7 @@ outer.top = [
 
     cmd-shift-c = 'reload-config'
     cmd-shift-v = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-assign-workspaces'
+    cmd-shift-b = 'exec-and-forget /bin/bash -c "killall sketchybar; sketchybar"'
 
     cmd-shift-t = 'mode resize'
 
