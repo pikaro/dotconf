@@ -110,6 +110,7 @@ outer.top = [
     cmd-shift-4 = 'move-node-to-workspace 3'
 
     cmd-shift-c = 'reload-config'
+    cmd-shift-v = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-assign-workspaces'
 
     cmd-shift-t = 'mode resize'
 
