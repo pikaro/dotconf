@@ -64,8 +64,8 @@ outer.top = [
     cmd-shift-l = 'move right'
 
     cmd-ctrl-h = 'focus-monitor left'
-    cmd-ctrl-j = 'workspace next'
-    cmd-ctrl-k = 'workspace prev'
+    cmd-ctrl-j = 'workspace next --wrap-around'
+    cmd-ctrl-k = 'workspace prev --wrap-around'
     cmd-ctrl-l = 'focus-monitor right'
 
     cmd-shift-ctrl-backslash = 'split horizontal'
