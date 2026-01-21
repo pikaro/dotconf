@@ -118,6 +118,12 @@ outer.top = [
     cmd-shift-4 = 'move-node-to-workspace 2'
     cmd-shift-backslash = 'move-node-to-workspace a'
 
+    cmd-ctrl-alt-1 = 'move-workspace-to-monitor 1'
+    cmd-ctrl-alt-2 = 'move-workspace-to-monitor 2'
+    cmd-ctrl-alt-3 = 'move-workspace-to-monitor 3'
+    cmd-ctrl-alt-h = 'move-workspace-to-monitor prev --wrap-around'
+    cmd-ctrl-alt-l = 'move-workspace-to-monitor next --wrap-around'
+
     cmd-shift-c = 'reload-config'
     cmd-shift-v = 'exec-and-forget ${HOME}/.local/gitbin/aerospace-assign-workspaces'
     cmd-shift-b = 'exec-and-forget /bin/bash -c "killall sketchybar; sketchybar"'
