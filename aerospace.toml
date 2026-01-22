@@ -43,8 +43,11 @@ outer.left =       4
 outer.bottom =     4
 outer.right =      4
 outer.top = [
-  { monitor."EB321HQU" = 40 },
-  { monitor."Acer CB241HY" = 40 },
+  # Large monitors
+  { monitor."EB321HQU" = 40 }, { monitor."DELL P3421W" = 40 },
+  # Side monitors
+  { monitor."Acer CB241HY" = 40 }, { monitor."DELL U2718Q" = 40 },
+  # Built-in display
   { monitor."Built-in Retina Display" = 8 },
   40,
 ]
