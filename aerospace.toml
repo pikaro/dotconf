@@ -53,7 +53,7 @@ outer.top = [
 ]
 
 [mode.main.binding]
-    cmd-shift-z = 'close --quit-if-last-window'
+    cmd-ctrl-shift-forwardDelete = 'close --quit-if-last-window'
 
     cmd-d = 'exec-and-forget ${HOME}/.local/gitbin/choose-app'
 
