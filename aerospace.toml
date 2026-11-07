@@ -146,6 +146,11 @@ outer.top = [
     run = ['layout floating']
 
 [[on-window-detected]]
+    if.app-id = 'org.mozilla.firefox'
+    if.window-title-regex-substring = 'Extension. .Bitwarden Password Manager. - Bitwarden'
+    run = ['layout floating']
+
+[[on-window-detected]]
     if.app-id = 'com.apple.Safari'
     if.app-name-regex-substring = 'ChatGPT'
     run = ['move-node-to-workspace a']
