@@ -13,6 +13,7 @@ ignore = [
     # Covered by Pyright
     "F821", # Unknown name
     "F401", # Unused import
+    "G004", # f-String logging
 ]
 
 [lint.per-file-ignores]
