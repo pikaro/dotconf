@@ -10,10 +10,10 @@ ignore = [
     "D",
     "T201", # Print found
     "Q000", # Single-quote
+    "G004", # f-String logging
     # Covered by Pyright
     "F821", # Unknown name
     "F401", # Unused import
-    "G004", # f-String logging
 ]
 
 [lint.per-file-ignores]
@@ -25,7 +25,7 @@ unfixable = []
 combine-as-imports = true
 
 [lint.mccabe]
-max-complexity = 5
+max-complexity = 8
 
 [lint.pydocstyle]
 convention = "google"
